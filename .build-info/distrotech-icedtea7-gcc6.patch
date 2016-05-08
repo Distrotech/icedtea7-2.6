@@ -1,0 +1,10 @@
+--- a/openjdk/hotspot/make/linux/makefiles/gcc.make	2016-05-02 21:29:57.114520268 +0200
++++ b/openjdk/hotspot/make/linux/makefiles/gcc.make	2016-05-02 21:30:14.157307204 +0200
+@@ -88,6 +88,7 @@
+ CFLAGS += -fno-exceptions
+ CFLAGS += -D_REENTRANT
+ CFLAGS += -fcheck-new
++CFLAGS += -std=gnu++98 -fno-delete-null-pointer-checks -fno-lifetime-dse
+ # version 4 and above support fvisibility=hidden (matches jni_x86.h file)
+ # except 4.1.2 gives pointless warnings that can't be disabled (afaik)
+ ifneq "$(shell expr \( $(CC_VER_MAJOR) \> 4 \) \| \( \( $(CC_VER_MAJOR) = 4 \) \& \( $(CC_VER_MINOR) \>= 3 \) \))" "0"
