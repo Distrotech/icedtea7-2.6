@@ -7220,10 +7220,18 @@ fi
 
   case "${host_cpu}" in
     x86_64)
-      BUILD_ARCH_DIR=amd64
-      INSTALL_ARCH_DIR=amd64
-      JRE_ARCH_DIR=amd64
-      ARCHFLAG="-m64"
+      case "${host_os}" in
+        *-gnux32)
+	  BUILD_ARCH_DIR=ilp32
+          INSTALL_ARCH_DIR=ilp32
+          JRE_ARCH_DIR=ilp32
+          ARCHFLAG="-mx32";;
+        *)
+	  BUILD_ARCH_DIR=amd64
+          INSTALL_ARCH_DIR=amd64
+          JRE_ARCH_DIR=amd64
+          ARCHFLAG="-m64";;
+      esac
       ;;
     i?86)
       BUILD_ARCH_DIR=i586
@@ -9295,10 +9303,18 @@ $as_echo "${DIST_ID}" >&6; }
 
   case "${host_cpu}" in
     x86_64)
-      BUILD_ARCH_DIR=amd64
-      INSTALL_ARCH_DIR=amd64
-      JRE_ARCH_DIR=amd64
-      ARCHFLAG="-m64"
+      case "${host_os}" in
+        *-gnux32)
+	  BUILD_ARCH_DIR=ilp32
+          INSTALL_ARCH_DIR=ilp32
+          JRE_ARCH_DIR=ilp32
+          ARCHFLAG="-mx32";;
+        *)
+	  BUILD_ARCH_DIR=amd64
+          INSTALL_ARCH_DIR=amd64
+          JRE_ARCH_DIR=amd64
+          ARCHFLAG="-m64";;
+      esac
       ;;
     i?86)
       BUILD_ARCH_DIR=i586
@@ -10943,7 +10959,7 @@ else
   mkdir tmp.$$
   cd tmp.$$
   cat << \EOF > $CLASS
-/* [#]line 10946 "configure" */
+/* [#]line 10962 "configure" */
 
 public class Test
 {
@@ -10987,7 +11003,7 @@ SUBHEADER=$(echo $SUBCLASS|sed 's#\.java#.h#')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $SUPERCLASS
-/* #line 10990 "configure" */
+/* #line 11006 "configure" */
 public class Test
 {
   public static final int POTATO = 0;
@@ -10995,7 +11011,7 @@ public class Test
 }
 EOF
 cat << \EOF > $SUBCLASS
-/* #line 10998 "configure" */
+/* #line 11014 "configure" */
 public class TestImpl
   extends Test
 {
@@ -11066,7 +11082,7 @@ SRC=Test.java
 CLASSFILE=$(echo $SRC|sed 's#\.java##')
 HEADER=$(echo $SRC|sed 's#\.java#.h#')
 cat << \EOF > $SRC
-/* #line 11069 "configure" */
+/* #line 11085 "configure" */
 public class Test
 {
     public native void doStuff();
@@ -11146,7 +11162,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11149 "configure" */
+/* [#]line 11165 "configure" */
 import java.io.File;
 import java.io.PrintStream;
 
@@ -11238,7 +11254,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11241 "configure" */
+/* [#]line 11257 "configure" */
 public class Test
 {
   public static void main(String[] args)
@@ -11290,7 +11306,7 @@ else
   mkdir tmp.$$
   cd tmp.$$
   cat << \EOF > $CLASS
-/* [#]line 11293 "configure" */
+/* [#]line 11309 "configure" */
 import java.util.Scanner;
 
 public class Test
@@ -11345,7 +11361,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11348 "configure" */
+/* [#]line 11364 "configure" */
 public class Test
 {
   public static void main(String[] args)
@@ -11397,7 +11413,7 @@ else
   mkdir tmp.$$
   cd tmp.$$
   cat << \EOF > $CLASS
-/* [#]line 11400 "configure" */
+/* [#]line 11416 "configure" */
 import javax.xml.namespace.QName;
 import javax.xml.stream.Location;
 import javax.xml.stream.events.Attribute;
@@ -11486,7 +11502,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11489 "configure" */
+/* [#]line 11505 "configure" */
 public class Test
 {
   public static void main(String[] args)
@@ -11539,7 +11555,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11542 "configure" */
+/* [#]line 11558 "configure" */
 public class Test
 {
   public static void main(String[] args)
@@ -11591,7 +11607,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11594 "configure" */
+/* [#]line 11610 "configure" */
 import java.lang.reflect.Method;
 
 public class Test
@@ -11657,7 +11673,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11660 "configure" */
+/* [#]line 11676 "configure" */
 import java.lang.reflect.Method;
 
 public class Test
@@ -11723,7 +11739,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11726 "configure" */
+/* [#]line 11742 "configure" */
 import java.lang.reflect.Method;
 
 public class Test
@@ -11789,7 +11805,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11792 "configure" */
+/* [#]line 11808 "configure" */
 import java.lang.reflect.Method;
 
 public class Test
@@ -11856,7 +11872,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11859 "configure" */
+/* [#]line 11875 "configure" */
 import java.lang.reflect.Constructor;
 
 public class Test
@@ -11928,7 +11944,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11931 "configure" */
+/* [#]line 11947 "configure" */
 public class Test
 {
   public static void main(String[] args)
@@ -11982,7 +11998,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 11985 "configure" */
+/* [#]line 12001 "configure" */
 public class Test
 {
   public static void main(String[] args)
@@ -12035,7 +12051,7 @@ else
   mkdir tmp.$$
   cd tmp.$$
   cat << \EOF > $CLASS
-/* [#]line 12038 "configure" */
+/* [#]line 12054 "configure" */
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -12122,7 +12138,7 @@ else
   mkdir tmp.$$
   cd tmp.$$
   cat << \EOF > $CLASS
-/* [#]line 12125 "configure" */
+/* [#]line 12141 "configure" */
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12168,7 +12184,7 @@ else
   mkdir tmp.$$
   cd tmp.$$
   cat << \EOF > $CLASS
-/* [#]line 12171 "configure" */
+/* [#]line 12187 "configure" */
 
 public class Test
 {
@@ -12219,7 +12235,7 @@ BYTECODE=$(echo $CLASS|sed 's#\.java##')
 mkdir tmp.$$
 cd tmp.$$
 cat << \EOF > $CLASS
-/* [#]line 12222 "configure" */
+/* [#]line 12238 "configure" */
 public class Test
 {
   public static void main(String[] args)
@@ -12302,7 +12318,7 @@ else
   mkdir tmp.$$
   cd tmp.$$
   cat << \EOF > $CLASS
-/* [#]line 12305 "configure" */
+/* [#]line 12321 "configure" */
 
 public class Test
 {
